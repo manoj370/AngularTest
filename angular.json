@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "AngularTest"
+  "defaultProject": "AngularTest",
+  "cli": {
+    "analytics": "31769bad-ed08-45cb-9e36-5b6eaa151ba2"
+  }
 }

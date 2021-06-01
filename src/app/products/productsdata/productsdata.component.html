@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-md-8">
+
+    </div>
+    <div class="col-md-3 text-right">
+        <select id="sort-by" (change)="sort($event)">
+            <option value="High" selected  >Show High to Low Price</option>
+            <option value="Low">Show Low to High Price</option>
+
+        </select>
+    </div>
+</div><br>
+<div class="row">
+   
+    <div class="col-md-12" >
+        <div style="height:600px;overflow: scroll;" (scroll)="scrollHandler($event)">
+        <table class="table table-hover" >
+            <thead>
+                <tr>
+                    <!-- <th>Image </th> -->
+                    <th>Collection</th>
+                    <th>Price</th>
+                    <th>ProductTitle</th>
+                    <th>StyleName</th>
+                    <th>StyleNumber</th>
+                    <th>NetQuantity</th>
+                    <th>ProductCode</th>
+                    <th>AvailableSizes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let x of productsData | slice:0:limit; let i=index" style="cursor: pointer;">
+                    <!-- <td>{{x.Images}}</td> -->
+                    <td>{{x.Collection}}</td>
+                    <td>{{x.Price}}</td>
+                    <td>{{x.ProductTitle}}</td>
+                    <td>{{x.StyleName}}</td>
+                    <td>{{x.StyleNumber}}</td>
+                    <td>{{x.NetQuantity}}</td>
+                    <td>{{x.ProductCode}}</td>
+                    <td>{{x.AvailableSizes}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
