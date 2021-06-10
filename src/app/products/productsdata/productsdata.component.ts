@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ServiceService } from 'src/app/service.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-productsdata',
@@ -9,9 +11,13 @@ import { ServiceService } from 'src/app/service.service';
 export class ProductsdataComponent implements OnInit {
   productsData: any;
   limit=12;
-  constructor(private service:ServiceService,) { }
+  imgHost = environment.imgHost;
+  sorttype: any;
+  constructor(private service:ServiceService,private activateroute:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
+    this.activateroute.params.subscribe((params: Params) => this.sorttype = params['sortType']);
+    console.log(this.sorttype);
     this.getProductsData();
   }
   // get Products Data
@@ -31,16 +37,20 @@ export class ProductsdataComponent implements OnInit {
     console.log(this.limit);
   }
   sort(event: any) {
+    console.log(event.target.value);
     switch (event.target.value) {
-      case "Low":
+      case "lowtohigh":
         {
           this.productsData = this.productsData.sort((low: { Price: number; }, high: { Price: number; }) => low.Price - high.Price);
+          debugger
+          this.router.navigate(['/list', { sortType: event.target.value}]);
           break;
         }
 
-      case "High":
+      case "hightolow":
         {
           this.productsData = this.productsData.sort((low: { Price: number; }, high: { Price: number; }) => high.Price - low.Price);
+          this.router.navigate(['/list', { sortType: event.target.value}]);
           break;
         }
 
@@ -53,5 +63,8 @@ export class ProductsdataComponent implements OnInit {
     }
     return this.productsData;
 
+  }
+  feedback(){
+    this.router.navigate(['/feedback']);
   }
 }

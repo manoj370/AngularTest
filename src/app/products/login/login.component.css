@@ -2,3 +2,9 @@
 {
     color: red;
 }
+.eyeIcon {
+    position: relative;
+    left: 88%;
+    bottom: 2rem;
+    cursor: pointer;
+}

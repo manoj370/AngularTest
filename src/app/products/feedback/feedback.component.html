@@ -8,7 +8,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12" style="padding-right:0%">
                         <label><b>Name</b></label>
-                        <input type="text" placeholder="Name"  class="form-control"
+                        <input type="text" placeholder="Name"  class="form-control" maxlength="75"
                             formControlName="Name" [ngClass]="{ 'is-invalid':  submitted && f.Name.errors }">
 
                         <div *ngIf=" submitted && f.Name.errors" class="invalid-feedback">
@@ -24,7 +24,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12" style="padding-right:0%">
                         <label><b>Email</b></label>
-                        <input type="text" placeholder="Email" class="form-control" formControlName="email"
+                        <input type="text" placeholder="Email" class="form-control" formControlName="email" maxlength="75"
                         [ngClass]="{ 'is-invalid':  submitted && f.email.errors }">
                        
                         <div *ngIf=" submitted && f.email.errors" class="invalid-feedback">
@@ -40,13 +40,13 @@
                 <div class="form-row">
                 <div class="formgroup col-md-12" style="padding-right:0%">
                     <label><b>Phone</b></label>
-                    <input type="text" placeholder="Phone"  class="form-control" formControlName="phone" [ngClass]="{ 'is-invalid':  submitted && f.phone.errors }">
+                    <input type="text" placeholder="Phone"  class="form-control" maxlength="10" formControlName="phone" [ngClass]="{ 'is-invalid':  submitted && f.phone.errors }">
                     <div *ngIf=" submitted && f.phone.errors" class="invalid-feedback">
                       <div *ngIf=" submitted && f.phone.errors.required" class="red">
                           Phone Required
                       </div>
                       <div *ngIf=" submitted && f.phone.errors.pattern" class="red">
-                        Invalid  Phone 
+                        Phone number should have starts with 9,8,7,6 and length 10 Digits
                     </div>
                     </div>
                     </div>
@@ -70,7 +70,7 @@
                 <div class="row">
                     <div class="col-md-12 text-right">
                         <button type="submit" class="btn btn-primary" (click)="submit()">Save</button>&nbsp;
-                        <button type="submit" class="btn btn-danger" (click)="cancel()">Cancel</button>
+                        <!-- <button type="submit" class="btn btn-danger" (click)="cancel()">Cancel</button> -->
                     </div>
                 </div>
 

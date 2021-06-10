@@ -1,14 +1,18 @@
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6">
 
     </div>
-    <div class="col-md-3 text-right">
-        <select id="sort-by" (change)="sort($event)">
-            <option value="High" selected  >Show High to Low Price</option>
-            <option value="Low">Show Low to High Price</option>
+    <div class="col-md-6 text-right">
+        <select class="form-select" id="sort-by" (change)="sort($event)">
+            <option value="hightolow" selected  >Show High to Low Price</option>
+            <option value="lowtohigh">Show Low to High Price</option>
 
-        </select>
+        </select>&nbsp;
+        <button type="button" class="btn btn-success" (click)="feedback()">Feedback</button>
     </div>
+    <!-- <div class="col-md-3 text-right">
+       
+    </div> -->
 </div><br>
 <div class="row">
    
@@ -17,7 +21,7 @@
         <table class="table table-hover" >
             <thead>
                 <tr>
-                    <!-- <th>Image </th> -->
+                    <th>Image </th>
                     <th>Collection</th>
                     <th>Price</th>
                     <th>ProductTitle</th>
@@ -30,7 +34,8 @@
             </thead>
             <tbody>
                 <tr *ngFor="let x of productsData | slice:0:limit; let i=index" style="cursor: pointer;">
-                    <!-- <td>{{x.Images}}</td> -->
+                    <td><img style="height: 20px; width:20px;" [src]="x.ListImagePath + x.Images" 
+             /></td>
                     <td>{{x.Collection}}</td>
                     <td>{{x.Price}}</td>
                     <td>{{x.ProductTitle}}</td>

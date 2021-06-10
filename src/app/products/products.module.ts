@@ -11,9 +11,13 @@ import { ServiceService } from '../service.service';
 import { urlServices } from '../serviceUrls';
 import { HttpClientModule } from '@angular/common/http';
 const routes: Routes = [
-
-  { path: '', component:LoginComponent },
-  { path: 'productsdata', component:ProductsdataComponent },
+  {
+    path: '',
+    redirectTo: "/login",
+    pathMatch: 'full'
+  },
+  { path: 'login', component: LoginComponent },
+  { path: 'list', component:ProductsdataComponent },
   { path: 'feedback', component:FeedbackComponent },
 ]
 

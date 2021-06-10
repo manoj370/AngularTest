@@ -8,7 +8,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12" style="padding-right:0%">
                         <label><b>UserName</b></label>
-                        <input type="text" placeholder="UserName" name="lastname" class="form-control"
+                        <input type="text" placeholder="UserName" name="lastname" maxlength="75" class="form-control"
                             formControlName="userName" [ngClass]="{ 'is-invalid':  submitted && f.userName.errors }">
 
                         <div *ngIf=" submitted && f.userName.errors" class="invalid-feedback">
@@ -24,9 +24,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-12" style="padding-right:0%">
                         <label><b>Password</b></label>
-                        <input type="text" placeholder="Password" class="form-control" formControlName="password"
+                        <input [type]="showpassword ? 'text' : 'password'"  placeholder="Password" maxlength="20" class="form-control" formControlName="password"
                         [ngClass]="{ 'is-invalid':  submitted && f.password.errors }">
-                        
+                        <span (click)="eyeToggel()" class="eyeIcon"> <i class="icon"
+                            [ngClass]="eyeShow ? 'fa fa-eye ' : 'fa fa-eye-slash '"
+                            aria-hidden="true"></i></span>
                         <div *ngIf=" submitted && f.password.errors" class="invalid-feedback">
                             <div *ngIf=" submitted && f.password.errors.required" class="red">
                                 Password Required

@@ -14,8 +14,8 @@ export class FeedbackComponent implements OnInit {
     // validations
     this.feedbackForm = this.fb.group({
       Name: ['', [Validators.required, Validators.pattern(/^[^-\s][a-zA-Z ]*$/)]],
-      email: ['', [Validators.required, Validators.pattern(/^[^-\s][a-zA-Z@0-9. ]*$/)]],
-      phone: ['', [Validators.required, Validators.pattern(/^[^-\s][0-9 ]*$/)]],
+      email: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z-]+.[a-zA-Z-.]+(com||in)+$'), Validators.email]],
+      phone: ['', [Validators.required, Validators.pattern('[6-9]\\d{9}')]],
       feedbackContent: ['', [Validators.required, Validators.pattern(/^[^-\s][a-zA-Z ]*$/)]],
     });
   }
@@ -35,11 +35,12 @@ export class FeedbackComponent implements OnInit {
     localStorage.setItem('Email', this.feedbackForm.value.email);
     localStorage.setItem('Phone', this.feedbackForm.value.phone);
     localStorage.setItem('Feedbackcontent', this.feedbackForm.value.feedbackContent);
+    this.feedbackForm.reset();
+ 
   }
   // clearing form
   cancel() {
-    this.feedbackForm.reset();
-    localStorage.clear();
+     localStorage.clear();
   }
 
 }
