@@ -16,7 +16,7 @@
                                 User Name Required
                             </div>
                             <div *ngIf=" submitted && f.userName.errors.pattern" class="red">
-                                Invalid User Name
+                               Invalid UserName (Ex :gowthami@gmail.com)
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                                 Password Required
                             </div>
                             <div *ngIf=" submitted && f.password.errors.pattern" class="red">
-                                Invalid Password
+                                Atleast One Special character,one uppercase,one lower case and number and length should be 8 characters (Example :Gowthami@1234)
                             </div>
                         </div>
                     </div>

@@ -1,49 +1,35 @@
 <div class="row">
-    <div class="col-md-6">
-
+    <form [formGroup]="searchForm">
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+        <input type="text" placeholder="Search" name="search" class="form-control"
+                            formControlName="search" (keypress)="getProductsData()" >
     </div>
-    <div class="col-md-6 text-right">
-        <select class="form-select" id="sort-by" (change)="sort($event)">
-            <option value="hightolow" selected  >Show High to Low Price</option>
-            <option value="lowtohigh">Show Low to High Price</option>
-
-        </select>&nbsp;
-        <button type="button" class="btn btn-success" (click)="feedback()">Feedback</button>
+    <div class="col-md-3">
+        <div class="col-md-12 text-right">
+        </div>
     </div>
-    <!-- <div class="col-md-3 text-right">
-       
-    </div> -->
-</div><br>
+</form>
+</div>
 <div class="row">
    
     <div class="col-md-12" >
-        <div style="height:600px;overflow: scroll;" (scroll)="scrollHandler($event)">
+        <div style="height:600px;overflow: scroll;" >
         <table class="table table-hover" >
             <thead>
                 <tr>
-                    <th>Image </th>
-                    <th>Collection</th>
-                    <th>Price</th>
-                    <th>ProductTitle</th>
-                    <th>StyleName</th>
-                    <th>StyleNumber</th>
-                    <th>NetQuantity</th>
-                    <th>ProductCode</th>
-                    <th>AvailableSizes</th>
+                    <th>S.No </th>
+                    <th>Name</th>
+                    <th>Icon</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let x of productsData | slice:0:limit; let i=index" style="cursor: pointer;">
-                    <td><img style="height: 20px; width:20px;" [src]="x.ListImagePath + x.Images" 
+                <tr *ngFor="let x of productsData let i=index" style="cursor: pointer;">
+                    <td>{{i+1}}</td>
+                    <td>{{x.name}}</td>
+                    <td><img style="height: 20px; width:20px;" [src]="x.ListImagePath" 
              /></td>
-                    <td>{{x.Collection}}</td>
-                    <td>{{x.Price}}</td>
-                    <td>{{x.ProductTitle}}</td>
-                    <td>{{x.StyleName}}</td>
-                    <td>{{x.StyleNumber}}</td>
-                    <td>{{x.NetQuantity}}</td>
-                    <td>{{x.ProductCode}}</td>
-                    <td>{{x.AvailableSizes}}</td>
+                    
                 </tr>
             </tbody>
         </table>

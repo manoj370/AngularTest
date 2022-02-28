@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,private router:Router) {
     // validations
     this.loginForm = this.fb.group({
-      userName: ['', [Validators.required, Validators.pattern(/^[^-\s][a-zA-Z ]*$/)]],
-      password: ['', [Validators.required, Validators.pattern(/^[^-\s][a-zA-Z0-9@*$ ]*$/)]],
+      userName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}/)]],
+      password: ['', [Validators.required, Validators.pattern(/^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}$/)]],
     });
   }
 
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   submit() {
     this.submitted = true;
     if(this.loginForm.valid){
-      this.router.navigate(['/list', { sortType: 'hightolow'}]);
+      this.router.navigate(['/list']);
     }else{
       alert('Please Enter Valid Details');
     }

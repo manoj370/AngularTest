@@ -5,7 +5,6 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductsdataComponent } from './productsdata/productsdata.component';
-import { FeedbackComponent } from './feedback/feedback.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceService } from '../service.service';
 import { urlServices } from '../serviceUrls';
@@ -18,11 +17,10 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'list', component:ProductsdataComponent },
-  { path: 'feedback', component:FeedbackComponent },
 ]
 
 @NgModule({
-  declarations: [LoginComponent, ProductsdataComponent, FeedbackComponent],
+  declarations: [LoginComponent, ProductsdataComponent, ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
